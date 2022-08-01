@@ -1,7 +1,6 @@
 import { React, useState, useEffect, useRef } from 'react'
-import {  Row, Col } from 'react-bootstrap/'
+import {Alert,  Row, Col } from 'react-bootstrap/'
 import axios from 'axios';
-import { Alert } from 'react-bootstrap/'
 
 const UserInfo = () => {
     const [user, getUser] = useState([])
@@ -11,6 +10,7 @@ const UserInfo = () => {
     const [modal, setModal] = useState(false)
     const name = useRef()
     const userInfo = useRef()
+    const avatar = useRef()
     const resData = (url, geData) => {
         axios.get(url).then(res => {
             geData(res.data)
@@ -46,8 +46,9 @@ const UserInfo = () => {
 
             return
         }
-        axios.post('https://62e02192fa8ed271c47efdef.mockapi.io/1/userInfo/1', {
+        axios.put('https://62e02192fa8ed271c47efdef.mockapi.io/1/userInfo/1', {
             name: name.current.value,
+            avatar: avatar.current.value,
             userInfo: userInfo.current.value,
         })
 
@@ -55,12 +56,10 @@ const UserInfo = () => {
 
         name.current.value = ''
         userInfo.current.value = ''
+        closeModal()
   
     }
 
-
-
-    if (error) return `Error: ${error.message}`;
 
 
 
@@ -94,12 +93,18 @@ const UserInfo = () => {
                         <div className='post-inner'>
                             <form onSubmit={editUser} className='mt-5'>
                                 <div className='form-group'>
-                                    <input ref={name} className="input-bg message" placeholder={user.name} />
+                                    <input type="text" ref={name} className="input-bg message" placeholder={user.name} />
                                 </div>
 
                                 <div className='form-group'>
-                                    <input ref={userInfo} className="input-bg message" placeholder={user.userInfo} />
+                                    <input type="text" ref={userInfo} className="input-bg message" placeholder={user.userInfo} />
                                 </div>
+
+                                <div className='form-group'>
+                                    <input type="file" ref={avatar} className="input-bg message" placeholder={user.avatar} />
+                                    
+                                </div>
+
                                 <div className="d-flex justify-content-end mt-3">
                                     <button type='submit' className="btn btn-custom create-post-btn">Edit</button>
                                 </div>
