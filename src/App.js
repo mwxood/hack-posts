@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { React, useState, useEffect } from 'react'
+import { Container, Row, Col } from 'react-bootstrap/'
+import Header from './components/header/Header'
+import UserInfo from './components/userInfo/UserInfo'
+import Posts from './components/posts/Posts'
+import CreatePost from './components/createPost/CreatePost'
+import Footer from './components/footer/Footer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [mounted, setMouted] = useState(true)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div className='app-holder'>
+     <Header />
+      <Container className='mt-5'>
+        <Row>
+          <Col className='mb-5' md={3}>
+            <UserInfo />
+          </Col>
+          <Col md={7}>
+            <CreatePost />
+            <Posts />
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
+   </div>
   );
 }
 
