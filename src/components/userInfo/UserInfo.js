@@ -48,17 +48,16 @@ const UserInfo = () => {
         }
         axios.put('https://62e02192fa8ed271c47efdef.mockapi.io/1/userInfo/1', {
             name: name.current.value,
-            avatar: avatar.current.value,
+            avatar: avatar.current.files[0].name,
             userInfo: userInfo.current.value,
         })
-
-        console.log(userInfo.current.value)
 
         name.current.value = ''
         userInfo.current.value = ''
         closeModal()
   
     }
+
 
 
 
@@ -86,11 +85,11 @@ const UserInfo = () => {
                
                     <div onClick={closeModal} className='overlay'></div>
                     <div className='modal-inner component-card-bg rounded'> 
-                    {error && <Alert variant='danger'>{error.title} {error.message}</Alert>}
                         <span onClick={closeModal} className='close-modal'>
                             <i className="fa-solid fa-xmark"></i>
                         </span>
                         <div className='post-inner'>
+                        {error && <Alert className='mt-5' variant='danger'>{error.title} {error.message}</Alert>}
                             <form onSubmit={editUser} className='mt-5'>
                                 <div className='form-group'>
                                     <input type="text" ref={name} className="input-bg message" placeholder={user.name} />
@@ -102,7 +101,7 @@ const UserInfo = () => {
 
                                 <div className='form-group'>
                                     <input type="file" ref={avatar} className="input-bg message" placeholder={user.avatar} />
-                                    
+                           
                                 </div>
 
                                 <div className="d-flex justify-content-end mt-3">

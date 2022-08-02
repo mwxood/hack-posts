@@ -102,6 +102,7 @@ body {
 
 .user-image {
   margin-right: 10px;
+  width: 48px;
 }
 
 .btn-custom {
@@ -191,6 +192,7 @@ body {
 
 .user-img {
   margin-right: 10px;
+  width: 48px;
 }
 
 .modal-inner {
@@ -225,5 +227,9 @@ body {
 .close-modal i {
   color: #ccc;
   font-size: 23px;
+}
+
+.active-like {
+  color: #FD7500;
 }
 

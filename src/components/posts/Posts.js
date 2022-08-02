@@ -10,7 +10,6 @@ const Posts = () => {
     const [user, setUser] = useState([])
     const [pages, setPages] = useState(5)
     const [isHidden, setHidden] = useState(false)
-    
     const url = 'https://62e02192fa8ed271c47efdef.mockapi.io/1/'
 
     const resData = async (url, geData) => {
@@ -60,7 +59,10 @@ const Posts = () => {
     }, [pages])
 
 
-
+    const likeHandler = () => {
+      
+       
+    }
 
 
 
@@ -92,7 +94,7 @@ const Posts = () => {
                     </div>
 
                     <div className='d-flex justify-content-between post-social-holder'>
-                        <span className='like-btn'>
+                        <span  onClick={likeHandler} className='like-btn'>
                             <i className="fa-solid fa-thumbs-up"></i> Like
                         </span>
                         <span className='share-btn'>
